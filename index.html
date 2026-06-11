@@ -4,18 +4,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Go OS — Gestão de Ordens de Serviço que funciona no campo</title>
+  <title>Operi — Gestão de Ordens de Serviço · Beta aberto</title>
   <meta name="description"
-    content="Crie, gerencie e finalize ordens de serviço onde estiver — com ou sem internet. App Android offline-first, relatórios em tempo real e PDF profissional. Conheça o Go OS.">
+    content="Crie, gerencie e finalize ordens de serviço onde estiver — com ou sem internet. App Android offline-first, relatórios em tempo real e PDF profissional. Conheça o Operi.">
 
   <!-- Open Graph / social -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Go OS — Gestão de OS que funciona de verdade">
+  <meta property="og:title" content="Operi — Gestão de OS que funciona de verdade">
   <meta property="og:description"
     content="Do campo ao escritório. App Android 100% offline, relatórios em tempo real e PDF profissional.">
-  <!-- TODO: trocar pela URL final da landing e por uma imagem og real -->
-  <meta property="og:url" content="https://SEU-DOMINIO.com.br">
-  <meta property="og:image" content="https://SEU-DOMINIO.com.br/og.png">
+  <meta property="og:url" content="https://operi.systrix.com.br/">
+  <!-- TODO: gerar uma imagem og real (1200x630) e subir como /og.png -->
+  <meta property="og:image" content="https://operi.systrix.com.br/og.png">
 
   <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
@@ -23,9 +23,11 @@
   <link rel="manifest" href="./site.webmanifest">
   <!--
   =========================================================================
-  CONFIG RÁPIDA — edite estes valores ao publicar na VPS:
-    • WhatsApp de vendas .... procure  WA_NUMERO  abaixo (link wa.me)
-    • E-mail de vendas ...... procure  contato@systrix.com.br
+  CONFIG RÁPIDA — edite no <script> ao final da página:
+    • WhatsApp de vendas .... const WA_NUMERO
+    • E-mail de vendas ...... const VENDAS_EMAIL
+  O formulário de lista de espera não tem backend: abre WhatsApp/e-mail
+  com a mensagem pronta. Quando houver endpoint próprio, trocar o handler.
   Tudo aqui é HTML/CSS/JS puro. Para publicar: jogue esta pasta num nginx.
   =========================================================================
 -->
@@ -33,7 +35,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&family=Sora:wght@700&display=swap');
 
     *,
     *::before,
@@ -52,8 +54,9 @@
       --ink-4: #a8a8a8;
       --line: #ebebeb;
       --line-2: #f0f0f0;
-      --blue: #1a56db;
-      --blue-dim: #e8f0fe;
+      --accent: #6c4cf1;
+      --accent-deep: #5b3df5;
+      --accent-dim: #ece8fd;
       --green: #059669;
       --green-dim: #d1fae5;
       --amber: #d97706;
@@ -115,11 +118,12 @@
     .nav-logo-mark {
       width: 32px;
       height: 32px;
-      background: var(--ink);
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-deep) 100%);
       border-radius: 9px;
       display: flex;
       align-items: center;
       justify-content: center;
+      box-shadow: 0 2px 8px rgba(108, 76, 241, 0.28);
     }
 
     .nav-logo-mark svg {
@@ -129,7 +133,8 @@
 
     .nav-logo-name {
       font-size: 15px;
-      font-weight: 600;
+      font-weight: 700;
+      font-family: 'Sora', var(--sans);
       color: var(--ink);
       letter-spacing: -0.02em;
     }
@@ -187,11 +192,11 @@
       align-items: center;
       gap: 8px;
       padding: 5px 12px;
-      background: var(--blue-dim);
+      background: var(--accent-dim);
       border-radius: 99px;
       font-size: 12px;
       font-weight: 600;
-      color: var(--blue);
+      color: var(--accent);
       letter-spacing: 0.04em;
       text-transform: uppercase;
       margin-bottom: 28px;
@@ -204,7 +209,7 @@
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      background: var(--blue);
+      background: var(--accent);
     }
 
     .hero-h1 {
@@ -420,11 +425,11 @@
     }
 
     .fi-blue {
-      background: var(--blue-dim);
+      background: var(--accent-dim);
     }
 
     .fi-blue svg {
-      color: var(--blue);
+      color: var(--accent);
     }
 
     .fi-green {
@@ -485,7 +490,7 @@
     .step-num {
       font-family: var(--serif);
       font-size: 1.6rem;
-      color: var(--blue);
+      color: var(--accent);
       line-height: 1;
       margin-bottom: 16px;
     }
@@ -540,7 +545,7 @@
       width: 360px;
       height: 360px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(26, 86, 219, 0.18) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(108, 76, 241, 0.18) 0%, transparent 70%);
       pointer-events: none;
     }
 
@@ -694,7 +699,7 @@
     }
 
     .mockup-bar.accent {
-      background: rgba(26, 86, 219, 0.5);
+      background: rgba(124, 99, 245, 0.55);
     }
 
     .mockup-card {
@@ -730,136 +735,220 @@
       box-shadow: 0 0 4px #34d399;
     }
 
-    /* ─── PRICING TEASER ─── */
-    .pricing {
+    /* ─── SHOWCASE / CARROSSEL ─── */
+    .showcase {
       padding: 80px 0;
     }
 
-    .plans {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+    .carousel {
+      max-width: 720px;
+      margin: 0 auto;
+      overflow: hidden;
     }
 
-    @media (max-width: 760px) {
-      .plans {
-        grid-template-columns: 1fr;
-      }
+    .car-track {
+      display: flex;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .plan {
+    .car-slide {
+      min-width: 100%;
+      padding: 0 4px;
+    }
+
+    .browser-mock {
       background: var(--surface);
       border: 1px solid var(--line);
-      border-radius: 20px;
-      padding: 30px 26px;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
+    }
+
+    .browser-top {
+      display: flex;
+      gap: 6px;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line-2);
+      background: #fdfdfd;
+    }
+
+    .browser-top span {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--line);
+    }
+
+    .browser-body {
+      padding: 20px;
       display: flex;
       flex-direction: column;
+      gap: 12px;
+      min-height: 230px;
     }
 
-    .plan.featured {
-      border-color: var(--ink);
-      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
-      position: relative;
+    .browser-2col {
+      flex-direction: row;
+      gap: 18px;
+      align-items: flex-start;
     }
 
-    .plan-tag {
-      position: absolute;
-      top: -11px;
-      left: 26px;
-      background: var(--ink);
-      color: #fff;
+    /* barras skeleton em superfície clara (a versão original é p/ fundo escuro) */
+    .browser-mock .mockup-bar {
+      background: var(--line);
+    }
+
+    .browser-mock .mockup-bar.accent {
+      background: rgba(124, 99, 245, 0.55);
+    }
+
+    .mock-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid var(--line-2);
+      border-radius: 12px;
+      padding: 12px 14px;
+    }
+
+    .mock-stripe {
+      width: 4px;
+      height: 34px;
+      border-radius: 99px;
+      flex-shrink: 0;
+    }
+
+    .mock-lines {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
+    }
+
+    .mock-pill {
       font-size: 10.5px;
       font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
       padding: 4px 10px;
       border-radius: 99px;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
     }
 
-    .plan-name {
-      font-size: 14px;
+    .pill-green { background: var(--green-dim); color: var(--green); }
+    .pill-amber { background: var(--amber-dim); color: var(--amber); }
+    .pill-violet { background: var(--accent-dim); color: var(--accent); }
+
+    .mock-photos {
+      display: grid;
+      grid-template-columns: repeat(2, 56px);
+      gap: 8px;
+    }
+
+    .mock-photos span {
+      width: 56px;
+      height: 56px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--line-2), var(--line));
+    }
+
+    .mock-signature {
+      margin-top: 6px;
+      font-size: 11.5px;
+      color: var(--green);
       font-weight: 600;
-      color: var(--ink);
-      margin-bottom: 6px;
+      border: 1px dashed var(--green-dim);
+      background: #f6fdf9;
+      padding: 8px 10px;
+      border-radius: 10px;
+      width: fit-content;
     }
 
-    .plan-people {
-      font-size: 12.5px;
-      color: var(--ink-3);
-      margin-bottom: 18px;
-      font-weight: 300;
-    }
-
-    .plan-price {
-      font-family: var(--serif);
-      font-size: 1.9rem;
-      color: var(--ink);
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-
-    .plan-price small {
-      font-family: var(--sans);
-      font-size: 0.8rem;
-      color: var(--ink-4);
-      font-weight: 400;
-    }
-
-    .plan-list {
-      list-style: none;
-      margin: 22px 0 26px;
+    .mock-chart {
       display: flex;
-      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+      height: 120px;
+      padding: 4px 6px 0;
+    }
+
+    .mock-chart span {
+      flex: 1;
+      border-radius: 6px 6px 2px 2px;
+      background: linear-gradient(180deg, var(--accent), var(--accent-deep));
+      opacity: 0.85;
+    }
+
+    .mock-kpis {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       gap: 10px;
     }
 
-    .plan-list li {
+    .mock-kpi {
+      border: 1px solid var(--line-2);
+      border-radius: 12px;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .mock-kpi em {
+      font-style: normal;
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      display: block;
+      color: var(--ink);
+    }
+
+    .mock-kpi i {
+      font-style: normal;
+      font-size: 10.5px;
+      color: var(--ink-4);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .car-caption {
+      text-align: center;
+      margin-top: 18px;
       display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      font-size: 13px;
-      color: var(--ink-2);
-      line-height: 1.4;
-      font-weight: 300;
+      flex-direction: column;
+      gap: 4px;
     }
 
-    .plan-list svg {
-      width: 14px;
-      height: 14px;
-      color: var(--green);
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-
-    .plan-cta {
-      margin-top: auto;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 7px;
-      padding: 11px 18px;
-      border-radius: 10px;
-      font-size: 14px;
+    .car-caption strong {
+      font-size: 15px;
+      color: var(--ink);
       font-weight: 600;
-      text-decoration: none;
-      border: 1px solid var(--line);
-      color: var(--ink-2);
-      background: var(--surface);
-      transition: all 0.15s;
     }
 
-    .plan-cta:hover {
-      border-color: #ccc;
+    .car-caption span {
+      font-size: 13.5px;
+      color: var(--ink-3);
+      font-weight: 300;
+      line-height: 1.6;
     }
 
-    .plan.featured .plan-cta {
-      background: var(--ink);
-      color: #fff;
-      border-color: var(--ink);
+    .car-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 20px;
     }
 
-    .plan.featured .plan-cta:hover {
-      opacity: 0.88;
+    .car-dots button {
+      width: 8px;
+      height: 8px;
+      border-radius: 99px;
+      border: none;
+      background: var(--line);
+      cursor: pointer;
+      padding: 0;
+      transition: all 0.2s;
+    }
+
+    .car-dots button.active {
+      background: var(--accent);
+      width: 22px;
     }
 
     /* ─── FAQ ─── */
@@ -949,7 +1038,7 @@
       transform: translateX(-50%);
       width: 500px;
       height: 300px;
-      background: radial-gradient(ellipse, rgba(26, 86, 219, 0.22) 0%, transparent 70%);
+      background: radial-gradient(ellipse, rgba(108, 76, 241, 0.25) 0%, transparent 70%);
       pointer-events: none;
     }
 
@@ -1033,6 +1122,212 @@
       margin-top: 22px;
       font-size: 12.5px;
       color: rgba(255, 255, 255, 0.4);
+    }
+
+    /* ─── BETA PILL ─── */
+    .beta-pill {
+      padding: 2px 8px;
+      border-radius: 99px;
+      background: var(--accent-dim);
+      color: var(--accent);
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* ─── WAITLIST FORM ─── */
+    .wl-form {
+      max-width: 440px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      text-align: left;
+    }
+
+    .wl-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    @media (max-width: 560px) {
+      .wl-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .wl-field label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.6);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .wl-field input {
+      width: 100%;
+      min-width: 0;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.07);
+      color: #fff;
+      font-family: var(--sans);
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.15s, background 0.15s;
+    }
+
+    .wl-field input::placeholder {
+      color: rgba(255, 255, 255, 0.35);
+    }
+
+    .wl-field input:focus {
+      border-color: rgba(255, 255, 255, 0.45);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .wl-consent {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 12.5px;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.55;
+      font-weight: 300;
+      cursor: pointer;
+    }
+
+    .wl-consent input {
+      margin-top: 2px;
+      width: 15px;
+      height: 15px;
+      accent-color: var(--accent);
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    .wl-consent a {
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: underline;
+    }
+
+    .wl-submit {
+      width: 100%;
+      justify-content: center;
+      font-family: var(--sans);
+      border: none;
+      cursor: pointer;
+    }
+
+    .wl-alt {
+      text-align: center;
+      font-size: 12.5px;
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    .wl-alt a {
+      color: rgba(255, 255, 255, 0.75);
+      text-decoration: underline;
+    }
+
+    .wl-disclaimer {
+      margin-top: 18px;
+      text-align: center;
+      font-size: 11.5px;
+      color: rgba(255, 255, 255, 0.38);
+      line-height: 1.6;
+      max-width: 440px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ─── LEGAL MODALS ─── */
+    .legal-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(10, 10, 10, 0.55);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+
+    .legal-modal.open {
+      display: flex;
+    }
+
+    .legal-box {
+      background: var(--surface);
+      border-radius: 18px;
+      max-width: 560px;
+      width: 100%;
+      max-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.25);
+      animation: fadeUp 0.25s ease-out both;
+    }
+
+    .legal-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 22px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .legal-head h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .legal-close {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 22px;
+      line-height: 1;
+      color: var(--ink-4);
+      padding: 4px 8px;
+      border-radius: 8px;
+    }
+
+    .legal-close:hover {
+      background: var(--line-2);
+      color: var(--ink);
+    }
+
+    .legal-body {
+      padding: 20px 22px;
+      overflow-y: auto;
+      font-size: 13.5px;
+      color: var(--ink-2);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .legal-body h4 {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink);
+      margin: 16px 0 6px;
+    }
+
+    .legal-body h4:first-child {
+      margin-top: 0;
+    }
+
+    .legal-body p {
+      margin-bottom: 10px;
     }
 
     /* ─── FOOTER ─── */
@@ -1150,19 +1445,15 @@
     <div class="container">
       <div class="nav-inner">
         <a href="#top" class="nav-logo">
-          <div class="nav-logo-mark">
-            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-            </svg>
-          </div>
-          <span class="nav-logo-name">Go OS</span>
+          <img src="./favicon-32x32.png" width="32" height="32" style="border-radius:8px;box-shadow:0 2px 8px rgba(106,74,241,0.28);" alt="Operi">
+          <span class="nav-logo-name">Operi</span>
+          <span class="beta-pill">Beta</span>
         </a>
         <div class="nav-links">
           <a href="#recursos" class="nav-link">Recursos</a>
           <a href="#como-funciona" class="nav-link">Como funciona</a>
-          <a href="#planos" class="nav-link">Planos</a>
-          <a href="#contato" class="nav-cta">Falar com vendas</a>
+          <a href="#sistema" class="nav-link">Sistema</a>
+          <a href="#contato" class="nav-cta">Entrar na lista</a>
         </div>
       </div>
     </div>
@@ -1173,11 +1464,11 @@
   <!-- HERO -->
   <section class="hero">
     <div class="container">
-      <div class="hero-eyebrow">App Android com suporte offline total</div>
+      <div class="hero-eyebrow">Beta aberto · Acesso antecipado</div>
       <h1 class="hero-h1">Gestão de OS que <em>funciona de verdade</em></h1>
       <p class="hero-sub">
-        Do campo ao escritório. Crie, gerencie e finalize ordens de serviço onde estiver — com ou sem internet. Sua
-        equipe trabalha, você acompanha em tempo real.
+        Do campo ao escritório. Crie, gerencie e finalize ordens de serviço onde estiver — com ou sem internet.
+        O Operi está em fase de validação com clientes reais: entre na lista de espera e conheça em primeira mão.
       </p>
       <div class="hero-cta">
         <a href="#contato" class="btn-primary">
@@ -1186,7 +1477,7 @@
             <path d="M22 2 11 13" />
             <path d="m22 2-7 20-4-9-9-4 20-7z" />
           </svg>
-          Solicitar demonstração
+          Entrar na lista de espera
         </a>
         <a href="#como-funciona" class="btn-ghost">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -1197,7 +1488,7 @@
           Ver como funciona
         </a>
       </div>
-      <p class="hero-note">Implantação assistida · Suporte incluso · Seus dados, sempre seus</p>
+      <p class="hero-note">Sem compromisso · Cadastro em 30 segundos · Dados tratados conforme a LGPD</p>
     </div>
   </section>
 
@@ -1244,7 +1535,7 @@
   <!-- FEATURES -->
   <section class="features" id="recursos" data-reveal>
     <div class="container">
-      <p class="section-label">Por que Go OS</p>
+      <p class="section-label">Por que Operi</p>
       <h2 class="section-title">Feito para quem trabalha <em>no campo</em></h2>
       <div class="features-grid">
         <div class="feature-cell">
@@ -1343,7 +1634,7 @@
         <div>
           <div class="app-badge">App Android</div>
           <h2 class="app-title">Trabalhe sem internet.<br><em>Sincronize quando quiser.</em></h2>
-          <p class="app-sub">O app Android do Go OS funciona 100% offline. Crie OS, tire fotos, colha assinaturas e
+          <p class="app-sub">O app Android do Operi funciona 100% offline. Crie OS, tire fotos, colha assinaturas e
             sincronize tudo automaticamente quando a conexão voltar.</p>
           <div class="app-features">
             <div class="app-feature-row">
@@ -1403,60 +1694,89 @@
     </div>
   </section>
 
-  <!-- PRICING TEASER -->
-  <section class="pricing" id="planos" data-reveal>
+  <!-- POR DENTRO DO SISTEMA (carrossel) -->
+  <section class="showcase" id="sistema" data-reveal>
     <div class="container">
-      <p class="section-label">Planos</p>
-      <h2 class="section-title">Comece pequeno, <em>cresça sem dor</em></h2>
-      <div class="plans">
-        <div class="plan">
-          <div class="plan-name">Básico</div>
-          <div class="plan-people">Para equipes enxutas — até 5 usuários</div>
-          <div class="plan-price">Sob consulta</div>
-          <ul class="plan-list">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
-                stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12" />
-              </svg> OS ilimitadas</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
-                stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12" />
-              </svg> App Android offline</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
-                stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12" />
-              </svg> PDF e link público</li>
-          </ul>
-          <a href="#contato" class="plan-cta">Falar com vendas</a>
+      <p class="section-label">Por dentro</p>
+      <h2 class="section-title">Veja o sistema <em>de perto</em></h2>
+
+      <div class="carousel" id="carousel" aria-roledescription="carrossel">
+        <div class="car-track" id="car-track">
+
+          <!-- Slide 1: Painel de OS -->
+          <div class="car-slide">
+            <div class="browser-mock">
+              <div class="browser-top"><span></span><span></span><span></span></div>
+              <div class="browser-body">
+                <div class="mock-row"><span class="mock-stripe" style="background:#3b82f6"></span>
+                  <div class="mock-lines"><div class="mockup-bar w-2-3"></div><div class="mockup-bar w-1-2"></div></div>
+                  <span class="mock-pill pill-green">Concluída</span>
+                </div>
+                <div class="mock-row"><span class="mock-stripe" style="background:#ec4899"></span>
+                  <div class="mock-lines"><div class="mockup-bar w-full"></div><div class="mockup-bar w-1-2"></div></div>
+                  <span class="mock-pill pill-amber">Em campo</span>
+                </div>
+                <div class="mock-row"><span class="mock-stripe" style="background:#10b981"></span>
+                  <div class="mock-lines"><div class="mockup-bar w-2-3"></div><div class="mockup-bar w-1-2"></div></div>
+                  <span class="mock-pill pill-violet">Aberta</span>
+                </div>
+              </div>
+            </div>
+            <div class="car-caption">
+              <strong>Painel de ordens</strong>
+              <span>Toda a operação numa tela: status, tipo de atendimento e responsável de cada OS.</span>
+            </div>
+          </div>
+
+          <!-- Slide 2: OS completa -->
+          <div class="car-slide">
+            <div class="browser-mock">
+              <div class="browser-top"><span></span><span></span><span></span></div>
+              <div class="browser-body browser-2col">
+                <div class="mock-photos">
+                  <span></span><span></span><span></span><span></span>
+                </div>
+                <div class="mock-lines" style="flex:1">
+                  <div class="mockup-bar w-2-3 accent"></div>
+                  <div class="mockup-bar w-full"></div>
+                  <div class="mockup-bar w-full"></div>
+                  <div class="mock-signature">Assinatura do cliente ✓</div>
+                </div>
+              </div>
+            </div>
+            <div class="car-caption">
+              <strong>OS completa</strong>
+              <span>Fotos, descrição do serviço e assinatura digital — tudo vira um PDF profissional.</span>
+            </div>
+          </div>
+
+          <!-- Slide 3: Relatório mensal -->
+          <div class="car-slide">
+            <div class="browser-mock">
+              <div class="browser-top"><span></span><span></span><span></span></div>
+              <div class="browser-body">
+                <div class="mock-chart">
+                  <span style="height:38%"></span><span style="height:62%"></span><span style="height:45%"></span>
+                  <span style="height:80%"></span><span style="height:58%"></span><span style="height:92%"></span>
+                </div>
+                <div class="mock-kpis">
+                  <div class="mock-kpi"><em>32</em><i>OS no mês</i></div>
+                  <div class="mock-kpi"><em>148h</em><i>Horas</i></div>
+                  <div class="mock-kpi"><em>97%</em><i>No prazo</i></div>
+                </div>
+              </div>
+            </div>
+            <div class="car-caption">
+              <strong>Relatório mensal</strong>
+              <span>Horas, produtividade e histórico por cliente — com link público pra compartilhar.</span>
+            </div>
+          </div>
+
         </div>
-        <div class="plan featured">
-          <span class="plan-tag">Mais popular</span>
-          <div class="plan-name">Pro</div>
-          <div class="plan-people">Para empresas em crescimento — até 20 usuários</div>
-          <div class="plan-price">Sob consulta</div>
-          <ul class="plan-list">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
-                stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12" />
-              </svg> Tudo do Básico</li>
-          </ul>
-          <a href="#contato" class="plan-cta">Falar com vendas</a>
-        </div>
-        <div class="plan">
-          <div class="plan-name">Enterprise</div>
-          <div class="plan-people">Operações grandes — usuários sobre demanda</div>
-          <div class="plan-price">Sob consulta</div>
-          <ul class="plan-list">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
-                stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12" />
-              </svg> Tudo do Pro</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
-                stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12" />
-              </svg> Suporte prioritário</li>
-          </ul>
-          <a href="#contato" class="plan-cta">Falar com vendas</a>
+        <div class="car-dots" id="car-dots" role="tablist">
+          <button type="button" class="active" aria-label="Slide 1"></button>
+          <button type="button" aria-label="Slide 2"></button>
+          <button type="button" aria-label="Slide 3"></button>
         </div>
       </div>
     </div>
@@ -1503,6 +1823,19 @@
           </div>
         </div>
         <div class="faq-item">
+          <button class="faq-q" type="button">O Operi está em beta. O que isso significa? <svg viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19" />
+              <line x1="5" y1="12" x2="19" y2="12" />
+            </svg></button>
+          <div class="faq-a">
+            <div class="faq-a-inner">Que o produto já roda em operações reais e segue evoluindo rápido: liberamos
+              melhorias continuamente com base no feedback dos primeiros clientes. Quem entra agora tem acesso
+              antecipado, acompanhamento próximo da equipe e influência direta no que construímos. O cadastro na lista
+              de espera não gera nenhum compromisso.</div>
+          </div>
+        </div>
+        <div class="faq-item">
           <button class="faq-q" type="button">Posso personalizar com a minha marca? <svg viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <line x1="12" y1="5" x2="12" y2="19" />
@@ -1517,32 +1850,56 @@
     </div>
   </section>
 
-  <!-- CTA FINAL / CONTATO -->
+  <!-- LISTA DE ESPERA / CONTATO -->
   <section class="cta-section" id="contato" data-reveal>
     <div class="container">
       <div class="cta-card">
         <div class="cta-inner">
-          <h2 class="cta-title">Pronto para <em>simplificar</em> sua operação?</h2>
-          <p class="cta-sub">Fale com a gente. Mostramos o sistema funcionando com a sua realidade e montamos a proposta
-            certa pro seu time.</p>
-          <div class="cta-actions">
-            <a href="https://wa.me/551239398741?text=Ol%C3%A1!%20Quero%20conhecer%20o%20Gestor%20OS" class="btn-light"
-              target="_blank" rel="noopener">
+          <h2 class="cta-title">Entre na <em>lista de espera</em></h2>
+          <p class="cta-sub">O Operi está em beta aberto, sendo validado com clientes reais. Deixe seu contato e nossa
+            equipe apresenta a demonstração completa — sem compromisso.</p>
+
+          <!-- Sem backend: o envio abre o WhatsApp/e-mail com a mensagem pronta.
+               TODO: quando houver endpoint próprio (ex: Formspree ou API), trocar o handler em wl-form. -->
+          <form class="wl-form" id="wl-form">
+            <div class="wl-row">
+              <div class="wl-field">
+                <label for="wl-nome">Nome *</label>
+                <input type="text" id="wl-nome" name="nome" placeholder="Seu nome" required autocomplete="name">
+              </div>
+              <div class="wl-field">
+                <label for="wl-empresa">Empresa</label>
+                <input type="text" id="wl-empresa" name="empresa" placeholder="Opcional" autocomplete="organization">
+              </div>
+            </div>
+            <div class="wl-field">
+              <label for="wl-email">E-mail *</label>
+              <input type="email" id="wl-email" name="email" placeholder="voce@empresa.com.br" required
+                autocomplete="email">
+            </div>
+            <label class="wl-consent">
+              <input type="checkbox" id="wl-consent" required>
+              <span>Li e concordo com a <a href="#" data-modal="privacidade">Política de Privacidade</a> e autorizo o
+                contato da equipe sobre a demonstração do Operi.</span>
+            </label>
+            <button type="submit" class="btn-light wl-submit">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                 <path
                   d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.978-1.607zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
               </svg>
-              Chamar no WhatsApp
-            </a>
-            <a href="mailto:contato@systrix.com.br?subject=Quero%20conhecer%20o%20Gestor%20OS" class="btn-outline">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="4" width="20" height="16" rx="2" />
-                <path d="m22 7-10 5L2 7" />
-              </svg>
-              Enviar e-mail
-            </a>
-          </div>
+              Quero entrar na lista
+            </button>
+            <p class="wl-alt">O envio abre seu WhatsApp com a mensagem pronta — ou, se preferir,
+              <a href="#" id="wl-email-link">envie por e-mail</a>.
+            </p>
+          </form>
+
+          <p class="wl-disclaimer">
+            O cadastro é apenas uma manifestação de interesse: não representa contratação, reserva ou compromisso
+            comercial. Esta página não armazena seus dados. Veja os
+            <a href="#" data-modal="termos" style="color:rgba(255,255,255,0.6);text-decoration:underline;">Termos da
+              Demonstração</a>.
+          </p>
         </div>
       </div>
     </div>
@@ -1554,11 +1911,8 @@
       <div class="footer-inner">
         <div>
           <div class="footer-brand">
-            <div class="nav-logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-              </svg></div>
-            <span>Go OS</span>
+            <img src="./favicon-32x32.png" width="28" height="28" style="border-radius:7px;box-shadow:0 2px 8px rgba(106,74,241,0.22);" alt="Operi">
+            <span style="font-family:'Sora',var(--sans);font-weight:700;">Operi</span>
           </div>
           <p
             style="margin-top:12px;font-size:12.5px;color:var(--ink-4);max-width:240px;line-height:1.6;font-weight:300;">
@@ -1569,19 +1923,103 @@
             <h4>Produto</h4>
             <a href="#recursos">Recursos</a>
             <a href="#como-funciona">Como funciona</a>
-            <a href="#planos">Planos</a>
+            <a href="#sistema">Por dentro do sistema</a>
           </div>
           <div class="footer-col">
             <h4>Contato</h4>
-            <a href="#contato">Falar com vendas</a>
-            <!-- TODO: trocar e-mail -->
+            <a href="#contato">Lista de espera</a>
             <a href="mailto:contato@systrix.com.br">contato@systrix.com.br</a>
+          </div>
+          <div class="footer-col">
+            <h4>Legal</h4>
+            <a href="./privacy.html" target="_blank" rel="noopener">Política de Privacidade</a>
+            <a href="./terms.html" target="_blank" rel="noopener">Termos de Uso</a>
           </div>
         </div>
       </div>
-      <div class="footer-bottom">© <span id="year">2026</span> Systrix · Go OS. Todos os direitos reservados.</div>
+      <div class="footer-bottom">
+        © <span id="year">2026</span> Systrix · Operi. Todos os direitos reservados.
+        <span style="display:block;margin-top:6px;">Versão beta — o produto evolui continuamente com o feedback dos
+          primeiros clientes.</span>
+      </div>
     </div>
   </footer>
+
+  <!-- MODAL: POLÍTICA DE PRIVACIDADE -->
+  <div class="legal-modal" id="modal-privacidade" role="dialog" aria-modal="true" aria-labelledby="priv-title">
+    <div class="legal-box">
+      <div class="legal-head">
+        <h3 id="priv-title">Política de Privacidade</h3>
+        <button type="button" class="legal-close" aria-label="Fechar">&times;</button>
+      </div>
+      <div class="legal-body">
+        <h4>1. Quem trata os seus dados (controlador)</h4>
+        <p>A Systrix, responsável pelo produto Operi, é a controladora dos dados informados nesta página. Contato:
+          <a href="mailto:contato@systrix.com.br">contato@systrix.com.br</a>.</p>
+        <h4>2. Quais dados coletamos</h4>
+        <p>Nome, e-mail e, opcionalmente, o nome da sua empresa — somente os dados que você informa no formulário de
+          lista de espera. Esta página não usa cookies de rastreamento nem armazena dados em servidor próprio: o envio
+          acontece pelo seu WhatsApp ou e-mail.</p>
+        <h4>3. Finalidade e base legal</h4>
+        <p>Usamos os dados exclusivamente para gerenciar a lista de interesse, entrar em contato sobre a demonstração
+          do Operi e comunicar condições comerciais relacionadas ao produto. A base legal é o seu
+          <strong>consentimento</strong> (art. 7º, I, da LGPD), dado ao marcar a caixa do formulário.</p>
+        <h4>4. Compartilhamento</h4>
+        <p>Não vendemos nem compartilhamos seus dados pessoais com terceiros. A mensagem enviada trafega pelos canais
+          que você escolher (WhatsApp ou seu provedor de e-mail), sujeitos às políticas dessas plataformas.</p>
+        <h4>5. Retenção</h4>
+        <p>Mantemos seus dados apenas enquanto durar a fase de demonstração e o seu interesse. Você pode pedir a
+          exclusão a qualquer momento.</p>
+        <h4>6. Seus direitos (art. 18 da LGPD)</h4>
+        <p>Você pode solicitar a qualquer momento: confirmação do tratamento, acesso, correção, exclusão dos dados e
+          revogação do consentimento de contato.</p>
+        <h4>7. Canal de atendimento</h4>
+        <p>Para exercer seus direitos, escreva para
+          <a href="mailto:contato@systrix.com.br">contato@systrix.com.br</a>. Atendemos de segunda a sexta, das 8h às
+          17h, e retornamos dentro desse horário.</p>
+        <div style="margin-top:1.25rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.12);text-align:center;">
+          <a href="./privacy.html" target="_blank" rel="noopener"
+             style="display:inline-flex;align-items:center;gap:6px;font-size:0.78rem;font-weight:600;color:var(--accent-dim);text-decoration:none;opacity:0.85;transition:opacity .15s;"
+             onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.85'">
+            Leia a Política de Privacidade completa
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: TERMOS DA DEMONSTRAÇÃO -->
+  <div class="legal-modal" id="modal-termos" role="dialog" aria-modal="true" aria-labelledby="termos-title">
+    <div class="legal-box">
+      <div class="legal-head">
+        <h3 id="termos-title">Termos da Demonstração</h3>
+        <button type="button" class="legal-close" aria-label="Fechar">&times;</button>
+      </div>
+      <div class="legal-body">
+        <h4>1. Versão beta</h4>
+        <p>O Operi encontra-se em fase de validação (beta aberto). Funcionalidades, telas e condições apresentadas
+          nesta página podem sofrer alterações até o lançamento oficial.</p>
+        <h4>2. Natureza do cadastro</h4>
+        <p>O envio do formulário representa apenas manifestação de interesse em conhecer a solução. Nenhum contrato é
+          celebrado por meio desta página e não há obrigação de contratação futura por qualquer das partes.</p>
+        <h4>3. Acesso à demonstração</h4>
+        <p>A Systrix poderá limitar o número de participantes, priorizar perfis de empresa ou encerrar a fase de
+          demonstração a qualquer momento, sem ônus para os interessados.</p>
+        <h4>4. Contato</h4>
+        <p>Dúvidas sobre estes termos:
+          <a href="mailto:contato@systrix.com.br">contato@systrix.com.br</a>.</p>
+        <div style="margin-top:1.25rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.12);text-align:center;">
+          <a href="./terms.html" target="_blank" rel="noopener"
+             style="display:inline-flex;align-items:center;gap:6px;font-size:0.78rem;font-weight:600;color:var(--accent-dim);text-decoration:none;opacity:0.85;transition:opacity .15s;"
+             onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.85'">
+            Leia os Termos de Uso completos
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script>
     // Scroll reveal
@@ -1604,6 +2042,72 @@
 
     // Ano dinâmico
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ── Lista de espera (sem backend: abre WhatsApp ou e-mail com mensagem pronta) ──
+    const WA_NUMERO = '551239398741';
+    const VENDAS_EMAIL = 'contato@systrix.com.br';
+
+    function wlMensagem() {
+      const nome = document.getElementById('wl-nome').value.trim();
+      const email = document.getElementById('wl-email').value.trim();
+      const empresa = document.getElementById('wl-empresa').value.trim();
+      let msg = `Olá! Quero entrar na lista de espera do Operi.\nNome: ${nome}\nE-mail: ${email}`;
+      if (empresa) msg += `\nEmpresa: ${empresa}`;
+      return msg;
+    }
+
+    document.getElementById('wl-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!e.target.reportValidity()) return;
+      window.open(`https://wa.me/${WA_NUMERO}?text=${encodeURIComponent(wlMensagem())}`, '_blank', 'noopener');
+    });
+
+    document.getElementById('wl-email-link').addEventListener('click', (e) => {
+      e.preventDefault();
+      const form = document.getElementById('wl-form');
+      if (!form.reportValidity()) return;
+      const subject = encodeURIComponent('Lista de espera — Operi');
+      window.location.href = `mailto:${VENDAS_EMAIL}?subject=${subject}&body=${encodeURIComponent(wlMensagem())}`;
+    });
+
+    // ── Modais legais ──
+    document.querySelectorAll('[data-modal]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const modal = document.getElementById('modal-' + link.dataset.modal);
+        if (modal) modal.classList.add('open');
+      });
+    });
+    document.querySelectorAll('.legal-modal').forEach(modal => {
+      modal.querySelector('.legal-close').addEventListener('click', () => modal.classList.remove('open'));
+      modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('open'); });
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') document.querySelectorAll('.legal-modal.open').forEach(m => m.classList.remove('open'));
+    });
+
+    // ── Carrossel "por dentro do sistema" ──
+    (() => {
+      const track = document.getElementById('car-track');
+      const dots = Array.from(document.querySelectorAll('#car-dots button'));
+      if (!track || !dots.length) return;
+      let idx = 0, timer;
+
+      function go(i) {
+        idx = (i + dots.length) % dots.length;
+        track.style.transform = `translateX(-${idx * 100}%)`;
+        dots.forEach((d, n) => d.classList.toggle('active', n === idx));
+      }
+
+      function play() { timer = setInterval(() => go(idx + 1), 5000); }
+      function stop() { clearInterval(timer); }
+
+      dots.forEach((d, n) => d.addEventListener('click', () => { stop(); go(n); play(); }));
+      const carousel = document.getElementById('carousel');
+      carousel.addEventListener('mouseenter', stop);
+      carousel.addEventListener('mouseleave', play);
+      play();
+    })();
   </script>
 
 </body>

@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Termos de Uso — Operi</title>
+  <meta name="description" content="Termos de Uso do sistema Operi, versão 1.6. Desenvolvido pela Systrix Telecom Ltda.">
+  <meta name="robots" content="noindex">
+  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+  <link rel="manifest" href="./site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&family=Sora:wght@700&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #fafafa;
+      --surface: #ffffff;
+      --ink: #0a0a0a;
+      --ink-2: #3d3d3d;
+      --ink-3: #787878;
+      --ink-4: #a8a8a8;
+      --line: #ebebeb;
+      --line-2: #f0f0f0;
+      --accent: #6c4cf1;
+      --accent-deep: #5b3df5;
+      --accent-dim: #ece8fd;
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    html, body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container {
+      width: 100%;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── Nav ── */
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(250,250,250,0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 56px;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 9px; text-decoration: none; color: var(--ink);
+    }
+    .nav-logo-mark {
+      width: 30px; height: 30px;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-deep) 100%);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 2px 8px rgba(108,76,241,0.28);
+      flex-shrink: 0;
+    }
+    .nav-logo-mark svg { width: 15px; height: 15px; }
+    .nav-logo-name { font-size: 14px; font-weight: 700; font-family: 'Sora', var(--sans); letter-spacing: -0.02em; }
+    .nav-back {
+      font-size: 13px; font-weight: 500; color: var(--ink-3);
+      text-decoration: none; display: flex; align-items: center; gap: 5px;
+      padding: 6px 12px; border-radius: 7px; transition: background 0.15s;
+    }
+    .nav-back:hover { background: var(--line-2); text-decoration: none; color: var(--ink-2); }
+
+    /* ── Doc header ── */
+    .doc-header {
+      padding: 52px 0 36px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 48px;
+    }
+    .doc-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 11px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase;
+      color: var(--accent); background: var(--accent-dim);
+      border-radius: 999px; padding: 3px 11px; margin-bottom: 16px;
+    }
+    .doc-badge::before {
+      content: ''; display: inline-block; width: 6px; height: 6px;
+      background: var(--accent); border-radius: 50%;
+    }
+    .doc-header h1 {
+      font-family: var(--serif); font-size: clamp(1.7rem, 4vw, 2.4rem);
+      color: var(--ink); line-height: 1.2; margin-bottom: 12px;
+    }
+    .doc-meta {
+      font-size: 13px; color: var(--ink-3); line-height: 1.6;
+    }
+    .doc-meta strong { color: var(--ink-2); }
+
+    /* ── Prose ── */
+    .doc-prose { padding-bottom: 80px; }
+
+    .doc-prose h2 {
+      font-family: var(--serif); font-size: 1.2rem; color: var(--ink);
+      margin: 2.5rem 0 0.8rem;
+      padding-bottom: 8px;
+      border-bottom: 1.5px solid var(--line);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .doc-prose h2::before {
+      content: ''; display: inline-block; width: 3px; height: 18px;
+      background: var(--accent); border-radius: 2px; flex-shrink: 0;
+    }
+    .doc-prose h3 {
+      font-size: 0.92rem; font-weight: 700; color: var(--ink-2);
+      margin: 1.5rem 0 0.5rem;
+    }
+    .doc-prose p {
+      font-size: 0.9rem; color: var(--ink-2); line-height: 1.75;
+      margin-bottom: 0.75rem;
+    }
+    .doc-prose ul, .doc-prose ol {
+      padding-left: 1.4rem; margin-bottom: 0.75rem;
+    }
+    .doc-prose li {
+      font-size: 0.9rem; color: var(--ink-2); line-height: 1.7;
+      margin-bottom: 0.3rem;
+    }
+    .doc-prose li::marker { color: var(--accent); }
+    .doc-prose strong { color: var(--ink); font-weight: 600; }
+    .doc-prose hr { border: none; border-top: 1px solid var(--line); margin: 2rem 0; }
+    .doc-prose code {
+      font-size: 0.8rem; background: var(--line-2); border-radius: 4px;
+      padding: 1px 6px; color: var(--ink-2); font-family: monospace;
+    }
+
+    /* Company header box */
+    .doc-prose .company-box {
+      background: #f9fafb; border: 1px solid var(--line); border-radius: 10px;
+      padding: 1rem 1.25rem; margin-bottom: 2rem; text-align: center;
+    }
+    .doc-prose .company-box p {
+      font-size: 0.78rem; color: var(--ink-3); margin: 2px 0;
+    }
+
+    /* Changelog box */
+    .doc-prose .changelog-box {
+      background: var(--accent-dim); border: 1px solid rgba(108,76,241,.18);
+      border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 2rem;
+    }
+    .doc-prose .changelog-box h4 {
+      font-size: 0.8rem; font-weight: 700; color: var(--accent);
+      text-transform: uppercase; letter-spacing: .06em; margin-bottom: 10px;
+    }
+    .doc-prose .changelog-box ul { margin: 0; }
+    .doc-prose .changelog-box li {
+      font-size: 0.82rem; color: var(--ink-2);
+    }
+
+    /* Blockquote */
+    .doc-prose blockquote {
+      border: none; background: #fffbeb;
+      border-left: 3px solid #f59e0b;
+      border-radius: 0 8px 8px 0;
+      padding: 0.6rem 1rem; margin: 0.75rem 0;
+    }
+    .doc-prose blockquote p {
+      color: #92400e; font-size: 0.82rem; margin: 0; line-height: 1.6;
+    }
+
+    /* Tables */
+    .doc-prose table {
+      width: 100%; border-collapse: collapse; font-size: 0.83rem;
+      margin: 0.75rem 0; border-radius: 8px; overflow: hidden;
+      border: 1px solid var(--line);
+    }
+    .doc-prose th {
+      background: #f8fafc; font-weight: 700; color: var(--ink-2);
+      padding: 9px 12px; text-align: left;
+      border-bottom: 1.5px solid var(--line);
+      font-size: 0.75rem; text-transform: uppercase; letter-spacing: .04em;
+    }
+    .doc-prose td {
+      padding: 8px 12px; color: var(--ink-2);
+      border-bottom: 1px solid var(--line-2); vertical-align: top; line-height: 1.5;
+    }
+    .doc-prose tr:last-child td { border-bottom: none; }
+    .doc-prose tr:nth-child(even) td { background: #fafafa; }
+
+    @media (max-width: 540px) {
+      .doc-prose table, .doc-prose thead, .doc-prose tbody, .doc-prose tr { display: block; width: 100%; }
+      .doc-prose thead { display: none; }
+      .doc-prose tr { border: 1px solid var(--line); border-radius: 8px; margin-bottom: 8px; overflow: hidden; }
+      .doc-prose td { display: flex; gap: 10px; padding: 7px 10px; border-bottom: 1px solid var(--line-2); background: none !important; }
+      .doc-prose td::before { content: attr(data-label); font-weight: 700; color: var(--ink-2); min-width: 80px; max-width: 80px; flex-shrink: 0; font-size: 0.7rem; padding-top: 1px; }
+    }
+
+    /* Footer doc */
+    .doc-footer-note {
+      text-align: center; font-size: 0.75rem; color: var(--ink-4);
+      padding: 16px 0 24px; border-top: 1px solid var(--line);
+      margin-top: 12px; line-height: 1.7;
+    }
+
+    /* Site footer */
+    .site-footer {
+      background: var(--ink); color: rgba(255,255,255,0.55);
+      padding: 32px 0; font-size: 13px; text-align: center; line-height: 1.7;
+      margin-top: 0;
+    }
+    .site-footer a { color: rgba(255,255,255,0.7); text-decoration: none; }
+    .site-footer a:hover { color: #fff; text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="./index.html" class="nav-logo">
+          <div class="nav-logo-mark">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="9" y1="13" x2="15" y2="13"/>
+              <line x1="9" y1="17" x2="13" y2="17"/>
+            </svg>
+          </div>
+          <span class="nav-logo-name">Operi</span>
+        </a>
+        <a href="./index.html" class="nav-back">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          Voltar ao site
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container">
+      <div class="doc-header">
+        <div class="doc-badge">Termos de Uso</div>
+        <h1>Termos de Uso<br>do Sistema Operi</h1>
+        <p class="doc-meta">
+          <strong>Versão 1.6</strong> · Vigente a partir de 09/06/2026<br>
+          Desenvolvido e mantido pela <strong>Systrix Telecom Ltda</strong> · CNPJ 54.200.017/0001-11<br>
+          Leia com atenção antes de usar o sistema.
+          Dúvidas? <a href="mailto:contato@systrix.com.br">contato@systrix.com.br</a>
+        </p>
+      </div>
+
+      <div class="doc-prose">
+
+        <div class="company-box">
+          <p><strong>Systrix Telecom Ltda</strong> · CNPJ 54.200.017/0001-11</p>
+          <p>Avenida Paraíso 126 - Jardim Paraíso, CEP 12235-460, São José dos Campos – SP</p>
+          <p>(12) 3939-8741 · contato@systrix.com.br · DPO: Matheus Maia · matheus.maia@systrix.com.br</p>
+          <p style="margin-top:6px;font-size:.72rem;">Aplicável a: Web (PWA) · Android (APK) · iOS (TestFlight)</p>
+        </div>
+
+        <div class="changelog-box">
+          <h4>O que mudou na v1.6</h4>
+          <ul>
+            <li><strong>Público-alvo e Escopo:</strong> Refinamento do texto para reforçar que o sistema é de uso exclusivamente corporativo e autorizado (Seção 2).</li>
+            <li><strong>Retenção e Tratamento:</strong> Atualização dos prazos de retenção e detalhamento sobre como os dados de Ordens de Serviço são tratados para compor o histórico documental (Seções 7.4 e 7.5).</li>
+            <li><strong>Backups:</strong> Nova seção esclarecendo as políticas de continuidade operacional e retenção temporária em backups (Seção 7.6).</li>
+            <li><strong>Infraestrutura e Segurança:</strong> Adequação das medidas técnicas à realidade atual do ambiente e alinhamento do processo de notificação de incidentes às exigências exatas da LGPD (Seções 11.1 e 11.4).</li>
+          </ul>
+        </div>
+
+        <h2>1. Identificação</h2>
+        <p>Este sistema é mantido pela <strong>Systrix Telecom Ltda</strong>, inscrita no CNPJ nº 54.200.017/0001-11, com sede na Avenida Paraíso 126 - Jardim Paraíso, CEP 12235-460, São José dos Campos – SP.</p>
+        <p>Contato geral: (12) 3939-8741 · <a href="mailto:contato@systrix.com.br">contato@systrix.com.br</a><br>
+        Encarregado de Dados (DPO): Matheus Maia · <a href="mailto:matheus.maia@systrix.com.br">matheus.maia@systrix.com.br</a></p>
+
+        <h2>2. Descrição e Escopo do Aplicativo</h2>
+        <p>O <strong>Operi</strong> é um sistema de gestão de ordens de serviços disponível nas seguintes modalidades:</p>
+        <ul>
+          <li><strong>Web / PWA</strong> (Progressive Web App) — instalável pelo navegador em qualquer plataforma</li>
+          <li><strong>Android nativo</strong> — distribuído como APK via link interno protegido</li>
+          <li><strong>iOS</strong> — distribuído via TestFlight para dispositivos autorizados</li>
+        </ul>
+        <h3>Funcionalidades principais</h3>
+        <ul>
+          <li>Criação, gestão e acompanhamento de ordens de serviço</li>
+          <li>Anexo de fotos e documentos às OS</li>
+          <li>Sincronização offline-first com envio automático quando houver conexão</li>
+          <li>Notificações push sobre atualizações de OS e mensagens internas</li>
+        </ul>
+        <p>Público-alvo: O sistema é destinado exclusivamente a colaboradores, prestadores de serviço e usuários autorizados vinculados às organizações contratantes, não sendo direcionado ao público infantil ou adolescente.</p>
+        <p>Plataformas suportadas: Android 8.0+ e iOS 14.0+. Versões anteriores podem funcionar de forma limitada e sem suporte oficial.</p>
+
+        <h2>3. Aceitação dos Termos</h2>
+        <p>O uso do aplicativo — incluindo o simples login, download do APK ou instalação da PWA — implica aceitação integral destes Termos. Caso discorde, não utilize o sistema.</p>
+        <p>Ao instalar o APK ou ativar permissões sensíveis (câmera, localização, notificações), será exibida tela de consentimento explícito, cujo aceite é registrado com data, hora e versão dos termos aceitos.</p>
+        <blockquote>
+          <p>⚠ Estes termos podem ser atualizados. O usuário será notificado por e-mail e/ou alerta in-app com antecedência mínima de <strong>10 dias</strong>. O uso continuado após a vigência implica aceitação.</p>
+        </blockquote>
+
+        <h2>4. Conta e Acesso</h2>
+        <h3>4.1 Registro</h3>
+        <p>O acesso é concedido mediante cadastro autorizado pela empresa. O usuário deve manter suas credenciais em sigilo e é responsável por toda atividade realizada em sua conta.</p>
+        <h3>4.2 Veracidade das Informações</h3>
+        <p>O usuário obriga-se a fornecer e manter dados verdadeiros, precisos e atualizados. Informações falsas podem resultar em suspensão imediata da conta.</p>
+        <h3>4.3 Suspensão e Encerramento</h3>
+        <p>A Systrix poderá suspender ou encerrar contas nos seguintes casos:</p>
+        <ul>
+          <li>Violação destes Termos</li>
+          <li>Fraude, uso indevido ou atividade suspeita</li>
+          <li>Inatividade superior a 180 dias (após notificação)</li>
+          <li>Determinação judicial ou solicitação de autoridade competente</li>
+        </ul>
+        <p>Após o encerramento, o usuário terá até <strong>30 dias</strong> para solicitar exportação de seus dados, antes da exclusão definitiva.</p>
+
+        <h2>5. Uso Aceitável</h2>
+        <h3>5.1 Comportamentos Proibidos</h3>
+        <p>É vedado ao usuário:</p>
+        <ul>
+          <li>Acessar, modificar ou interferir nos sistemas, redes ou dados de outros usuários</li>
+          <li>Realizar engenharia reversa, descompilar ou extrair o código-fonte do aplicativo</li>
+          <li>Utilizar bots, scripts ou automações não autorizadas</li>
+          <li>Inserir, transmitir ou armazenar conteúdo ilegal, difamatório ou que viole direitos de terceiros</li>
+          <li>Compartilhar credenciais de acesso com terceiros não autorizados</li>
+          <li>Instalar ou distribuir o APK fora dos canais oficiais da empresa</li>
+        </ul>
+        <h3>5.2 Conteúdo do Usuário</h3>
+        <p>Fotos, documentos e descrições inseridos nas OS são de responsabilidade exclusiva do usuário. A Systrix reserva-se o direito de remover conteúdo que viole a lei ou estes Termos, sem aviso prévio.</p>
+        <p>O usuário concede à Systrix uma licença limitada, não exclusiva e revogável para armazenar, processar e exibir o conteúdo enviado exclusivamente para a prestação dos serviços contratados.</p>
+
+        <h2>6. Permissões e Funcionalidades do Dispositivo</h2>
+        <p>O aplicativo pode solicitar as seguintes permissões, sempre com justificativa clara antes da solicitação:</p>
+        <table>
+          <thead>
+            <tr>
+              <th data-label="Permissão">Permissão</th>
+              <th data-label="Finalidade">Finalidade</th>
+              <th data-label="Obrigatória">Obrigatória</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-label="Permissão"><strong>Câmera</strong></td>
+              <td data-label="Finalidade">Captura de fotos para anexo a ordens de serviço. Não utilizada para monitoramento.</td>
+              <td data-label="Obrigatória">Não</td>
+            </tr>
+            <tr>
+              <td data-label="Permissão"><strong>Localização (Foreground)</strong></td>
+              <td data-label="Finalidade">Registro de localização de execução de OS. Coletada apenas com app aberto.</td>
+              <td data-label="Obrigatória">Não</td>
+            </tr>
+            <tr>
+              <td data-label="Permissão"><strong>Localização (Background)</strong></td>
+              <td data-label="Finalidade">Registro de rota/deslocamento em campo quando habilitada. Revogável a qualquer momento.</td>
+              <td data-label="Obrigatória">Não</td>
+            </tr>
+            <tr>
+              <td data-label="Permissão"><strong>Armazenamento / Arquivos</strong></td>
+              <td data-label="Finalidade">Salvar e acessar anexos de OS localmente para funcionamento offline.</td>
+              <td data-label="Obrigatória">Não</td>
+            </tr>
+            <tr>
+              <td data-label="Permissão"><strong>Notificações Push</strong></td>
+              <td data-label="Finalidade">Alertas sobre novas OS, atualizações de status e mensagens internas. Opt-in.</td>
+              <td data-label="Obrigatória">Não</td>
+            </tr>
+            <tr>
+              <td data-label="Permissão"><strong>Microfone</strong></td>
+              <td data-label="Finalidade">Gravação de notas de voz para OS (quando funcionalidade ativa). Não coletado em background.</td>
+              <td data-label="Obrigatória">Não</td>
+            </tr>
+          </tbody>
+        </table>
+        <blockquote>
+          <p>⚠ Localização em background impacta a bateria do dispositivo. O usuário será informado antes de conceder a permissão.</p>
+        </blockquote>
+        <p>Nenhuma permissão é obrigatória para o funcionamento básico, exceto autenticação. Permissões adicionais ampliam funcionalidades.</p>
+
+        <h2>7. Dados Coletados e Privacidade</h2>
+        <h3>7.1 Categorias de Dados</h3>
+        <ul>
+          <li><strong>Identificação:</strong> nome, e-mail, login, cargo</li>
+          <li><strong>Ordens de serviço:</strong> histórico, registros, fotos e anexos</li>
+          <li><strong>Geolocalização:</strong> somente com consentimento explícito, para localização de OS se solicitado</li>
+          <li><strong>Telemetria mobile:</strong> identificadores de dispositivo, versão do app e SO, logs de uso e relatórios de falha</li>
+          <li><strong>Dados de rede:</strong> IP de acesso, tipo de conexão, timestamps de sincronização</li>
+        </ul>
+        <h3>7.2 Finalidades do Tratamento</h3>
+        <ul>
+          <li>Autenticação e controle de acesso</li>
+          <li>Prestação dos serviços de gestão de OS</li>
+          <li>Estabilidade, segurança e suporte técnico (telemetria)</li>
+          <li>Notificações sobre OS e comunicações internas</li>
+          <li>Cumprimento de obrigações legais e fiscais</li>
+        </ul>
+        <h3>7.3 Base Legal (LGPD)</h3>
+        <ul>
+          <li><strong>Execução de contrato</strong> — operação e prestação de serviços</li>
+          <li><strong>Consentimento</strong> — geolocalização, telemetria e notificações</li>
+          <li><strong>Obrigação legal</strong> — registros exigidos por autoridades competentes</li>
+          <li><strong>Interesse legítimo</strong> — segurança, prevenção a fraudes e logs de auditoria</li>
+        </ul>
+        <h3>7.4 Retenção de Dados</h3>
+        <table>
+          <thead>
+            <tr>
+              <th data-label="Tipo">Tipo de dado</th>
+              <th data-label="Prazo">Prazo de retenção</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-label="Tipo">Dados de Ordens de Serviço</td>
+              <td data-label="Prazo">Mantidos durante a vigência da relação contratual e posteriormente pelo período necessário ao cumprimento de obrigações legais, regulatórias, contratuais e ao exercício regular de direitos</td>
+            </tr>
+            <tr>
+              <td data-label="Tipo">Logs de telemetria e relatórios de falha</td>
+              <td data-label="Prazo">Até 12 meses</td>
+            </tr>
+            <tr>
+              <td data-label="Tipo">Logs de acesso e auditoria</td>
+              <td data-label="Prazo">Até 24 meses</td>
+            </tr>
+            <tr>
+              <td data-label="Tipo">Dados de contas encerradas</td>
+              <td data-label="Prazo">Excluídos ou anonimizados após 30 dias, salvo quando houver obrigação legal, regulatória ou necessidade legítima de retenção</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>7.5 Tratamento de Dados em Ordens de Serviço</h3>
+        <p>As informações registradas nas Ordens de Serviço, incluindo dados do cliente, do técnico responsável, registros de execução, assinaturas, anexos, fotografias, datas, horários e demais informações necessárias à prestação dos serviços, poderão ser armazenadas para fins operacionais, administrativos, contratuais, fiscais, de garantia, auditoria, suporte técnico, segurança da informação e exercício regular de direitos.</p>
+        <p>Esses registros passam a compor o histórico documental da prestação dos serviços e poderão ser mantidos pelo período necessário ao cumprimento de obrigações legais, regulatórias ou contratuais, bem como para resguardar direitos da empresa, dos clientes e dos profissionais envolvidos.</p>
+        <p>Solicitações de exclusão de dados pessoais serão analisadas individualmente, observando os direitos previstos na LGPD, podendo determinados registros ser preservados quando sua manutenção for necessária para cumprimento de obrigação legal, execução contratual, garantia dos serviços prestados, auditoria ou exercício regular de direitos.</p>
+
+        <h3>7.6 Backups e Continuidade Operacional</h3>
+        <p>Os dados armazenados no sistema poderão ser incluídos em rotinas automatizadas de backup destinadas à continuidade operacional, recuperação de desastres, preservação da integridade das informações e segurança da informação.</p>
+        <p>Os backups são mantidos por período limitado conforme as políticas internas de retenção de dados e poderão permanecer armazenados temporariamente mesmo após solicitações de exclusão, sendo eliminados automaticamente ao término do respectivo ciclo de retenção.</p>
+
+        <h3>7.7 Direitos dos Titulares</h3>
+        <p>Conforme a LGPD (Lei nº 13.709/2018), o titular tem direito a: confirmação de tratamento, acesso, correção, anonimização, bloqueio, eliminação, portabilidade, revogação de consentimento e reclamação à ANPD.</p>
+        <p>Solicitações: <a href="mailto:matheus.maia@systrix.com.br"><strong>matheus.maia@systrix.com.br</strong></a></p>
+
+        <h2>8. Armazenamento Local e Sincronização Offline</h2>
+        <p>O aplicativo opera em modo <strong>offline-first</strong>: os dados são armazenados localmente no dispositivo e sincronizados com o servidor quando há conexão disponível.</p>
+        <h3>8.1 Criptografia Local</h3>
+        <p>Credenciais e dados sensíveis são armazenados com criptografia (flutter_secure_storage / Keychain / Keystore). Tokens de sessão nunca são gravados em armazenamento não protegido.</p>
+        <h3>8.2 Política de Conflitos</h3>
+        <p>Em caso de conflito entre versão local e servidor, prevalece a versão com maior timestamp de modificação. O usuário pode ser notificado para resolver conflitos manualmente em situações críticas.</p>
+        <h3>8.3 Limpeza de Cache</h3>
+        <p>O usuário pode limpar o cache local nas configurações do app. Dados sincronizados com o servidor não são afetados. Dados não sincronizados serão perdidos.</p>
+        <blockquote>
+          <p>⚠ Dados gravados localmente e ainda não sincronizados podem ser perdidos em caso de desinstalação do app ou falha grave do dispositivo.</p>
+        </blockquote>
+
+        <h2>9. Distribuição e Instalação de Aplicativos Móveis</h2>
+        <h3>9.1 Canais Oficiais</h3>
+        <ul>
+          <li><strong>PWA:</strong> instalável via navegador, sem necessidade de lojas</li>
+          <li><strong>Android:</strong> APK distribuído por link interno protegido, assinado digitalmente pela Systrix</li>
+          <li><strong>iOS:</strong> via convite TestFlight para dispositivos cadastrados</li>
+        </ul>
+        <h3>9.2 Responsabilidade na Instalação de APK</h3>
+        <p>A instalação de APKs fora da Play Store exige habilitar "Instalar apps de fontes desconhecidas". O usuário reconhece que:</p>
+        <ul>
+          <li>A Systrix não se responsabiliza por danos decorrentes de instalações fora das instruções oficiais</li>
+          <li>APKs de origem desconhecida não devem ser instalados — use apenas links enviados pela empresa</li>
+          <li>A empresa não garante compatibilidade com dispositivos com root ou jailbreak</li>
+        </ul>
+        <h3>9.3 Atualizações</h3>
+        <p>Correções críticas de segurança podem exigir atualização obrigatória. Versões desatualizadas podem ter acesso restringido. Changelogs serão publicados no sistema a cada release.</p>
+        <h3>9.4 Registro de Download (Auditoria)</h3>
+        <p>O servidor registra automaticamente o evento de download do APK (data, hora, usuário e IP) para fins de rastreabilidade, suporte e comprovação de aceite dos termos.</p>
+
+        <h2>10. Fornecedores Terceirizados e Transferência Internacional</h2>
+        <p>Utilizamos os seguintes provedores que podem ter acesso limitado a dados técnicos:</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Fornecedor</th>
+              <th>Finalidade</th>
+              <th>Região</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Serviço de hospedagem em nuvem</td>
+              <td>Armazenamento seguro de dados e backups</td>
+              <td>Brasil</td>
+            </tr>
+            <tr>
+              <td>Provedor de e-mail transacional</td>
+              <td>Envio de notificações e alertas ao usuário</td>
+              <td>A definir</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Transferências internacionais ocorrem em conformidade com a LGPD, adotando cláusulas contratuais padrão e garantias adequadas de proteção de dados.</p>
+
+        <h2>11. Segurança</h2>
+        <h3>11.1 Medidas Técnicas</h3>
+        <ul>
+          <li>Comunicação protegida por TLS (HTTPS) entre clientes e serviços publicados.</li>
+          <li>Comunicação segura entre a infraestrutura em nuvem e o ambiente local através de túnel VPN WireGuard.</li>
+          <li>Controle de autenticação e autorização para acesso ao sistema e aos recursos administrativos.</li>
+          <li>Senhas de usuários armazenadas utilizando algoritmos de hash seguros compatíveis com as práticas recomendadas pelo framework utilizado.</li>
+          <li>Credenciais sensíveis armazenadas de forma protegida e segregadas da aplicação.</li>
+          <li>Serviços internos restritos à rede privada e interfaces locais quando aplicável, reduzindo a exposição direta à internet.</li>
+          <li>Registro de logs operacionais, auditoria e rastreabilidade das ações executadas no sistema.</li>
+          <li>Rotinas automatizadas de backup para preservação da integridade das informações e recuperação de desastres.</li>
+          <li>Monitoramento da infraestrutura e dos serviços críticos para identificação de falhas operacionais.</li>
+          <li>Atualizações corretivas e de segurança aplicadas periodicamente conforme necessidade operacional.</li>
+        </ul>
+        <h3>11.2 Responsabilidade do Usuário</h3>
+        <ul>
+          <li>Manter o dispositivo atualizado e protegido</li>
+          <li>Não compartilhar credenciais de acesso</li>
+          <li>Reportar imediatamente suspeitas de comprometimento ao suporte</li>
+        </ul>
+        <h3>11.3 Relato de Vulnerabilidades</h3>
+        <p>Vulnerabilidades podem ser reportadas a <a href="mailto:contato@systrix.com.br"><strong>contato@systrix.com.br</strong></a> com assunto <code>[SECURITY]</code>. O prazo de resposta é de até 5 dias úteis. A empresa não realiza processos judiciais contra pesquisadores que atuem de boa-fé.</p>
+        <h3>11.4 Incidentes de Segurança</h3>
+        <p>Em caso de incidente de segurança envolvendo dados pessoais, a Systrix adotará os procedimentos de avaliação, contenção e comunicação previstos na legislação aplicável, incluindo eventual notificação à ANPD e aos titulares afetados quando exigido pela regulamentação vigente.</p>
+
+        <h2>12. Notificações e Processos em Background</h2>
+        <p>Notificações push são opt-in e podem ser desativadas a qualquer momento nas configurações do dispositivo. Tipos de notificação:</p>
+        <ul>
+          <li>Novas OS atribuídas ao usuário</li>
+          <li>Atualizações de status de OS em andamento</li>
+          <li>Mensagens internas e alertas administrativos</li>
+          <li>Avisos de atualização obrigatória do aplicativo</li>
+        </ul>
+        <p>Processos em background (sincronização offline, localização) são executados conforme as políticas do sistema operacional e podem ser desativados nas configurações do app ou do dispositivo.</p>
+
+        <h2>13. Propriedade Intelectual</h2>
+        <p>Todos os direitos sobre o <strong>Operi</strong> — incluindo código, design, marca, logotipo e documentação — pertencem à Systrix Telecom Ltda ou a seus licenciadores. O usuário recebe uma licença limitada, não exclusiva, não transferível e revogável para uso do sistema exclusivamente para os fins previstos nestes Termos.</p>
+        <p>É vedado reproduzir, distribuir, vender, sublicenciar ou criar obras derivadas do aplicativo sem autorização expressa e por escrito da Systrix.</p>
+
+        <h2>14. Garantias, Limitação de Responsabilidade e Indenização</h2>
+        <h3>14.1 Isenção de Garantias</h3>
+        <p>O aplicativo é fornecido "no estado em que se encontra", sem garantias implícitas de comercialização, adequação a finalidade específica ou operação ininterrupta. A Systrix não garante que o sistema estará livre de erros ou disponível 100% do tempo.</p>
+        <h3>14.2 Limitação de Danos</h3>
+        <p>A responsabilidade total da Systrix ficará limitada ao valor pago pelo usuário nos <strong>12 meses anteriores</strong> ao evento que originou o dano. Em nenhuma hipótese a Systrix será responsável por danos indiretos, lucros cessantes, perda de dados ou danos consequenciais.</p>
+        <h3>14.3 Força Maior</h3>
+        <p>A Systrix não será responsabilizada por falhas decorrentes de eventos fora de seu controle razoável, incluindo falhas de infraestrutura de terceiros, desastres naturais, ataques cibernéticos externos ou determinações governamentais.</p>
+        <h3>14.4 Indenização pelo Usuário</h3>
+        <p>O usuário indenizará e isentará a Systrix de quaisquer perdas, danos, custas e honorários advocatícios decorrentes de: uso indevido do sistema, violação destes Termos, fraude, violação de direitos de propriedade intelectual ou descumprimento de legislação aplicável.</p>
+
+        <h2>15. Suspensão e Rescisão</h2>
+        <p>A Systrix pode suspender ou encerrar o acesso do usuário, com ou sem aviso prévio, nos casos de:</p>
+        <ul>
+          <li>Violação grave ou reiterada destes Termos</li>
+          <li>Atividade fraudulenta ou que comprometa a segurança do sistema</li>
+          <li>Determinação judicial ou solicitação de autoridade competente</li>
+          <li>Encerramento do contrato entre a Systrix e a empresa empregadora do usuário</li>
+        </ul>
+        <p>Após a rescisão, o usuário terá <strong>30 dias</strong> para solicitar exportação dos dados pessoais de sua titularidade. Após esse prazo, os dados serão excluídos, salvo obrigação legal de retenção.</p>
+
+        <h2>16. Transferência de Negócios</h2>
+        <p>Em caso de fusão, aquisição, venda de ativos ou qualquer outra reorganização societária da Systrix Telecom Ltda, estes Termos e a base de dados de usuários poderão ser transferidos ao novo controlador, desde que:</p>
+        <ul>
+          <li>Os usuários sejam notificados com antecedência mínima de 30 dias</li>
+          <li>O novo controlador mantenha proteções equivalentes ou superiores às previstas nestes Termos</li>
+          <li>O usuário tenha a opção de encerrar sua conta antes da transferência, se desejar</li>
+        </ul>
+        <blockquote>
+          <p>ℹ Esta cláusula garante que seus dados estejam protegidos mesmo em caso de mudança de proprietário do sistema.</p>
+        </blockquote>
+
+        <h2>17. Links e Serviços de Terceiros</h2>
+        <p>O aplicativo pode conter links ou integrações com serviços de terceiros (ex.: mapas, autenticação externa). A Systrix não se responsabiliza pelo conteúdo, políticas de privacidade ou funcionamento desses serviços. O usuário acessa tais serviços por sua própria conta e risco.</p>
+
+        <h2>18. Comunicações e Suporte</h2>
+        <p>Notificações sobre alterações nos Termos serão enviadas por e-mail cadastrado e/ou alerta in-app. O suporte técnico está disponível pelos canais:</p>
+        <ul>
+          <li><strong>E-mail:</strong> <a href="mailto:contato@systrix.com.br">contato@systrix.com.br</a> — segunda a sexta, das 8h às 17h</li>
+          <li><strong>Telefone:</strong> (12) 3939-8741 — segunda a sexta, das 8h às 17h</li>
+          <li><strong>In-app:</strong> pelo menu "Suporte" no aplicativo</li>
+        </ul>
+
+        <h2>19. Disposições Legais</h2>
+        <h3>19.1 Legislação Aplicável</h3>
+        <p>Estes Termos são regidos pelas leis da República Federativa do Brasil, em especial a LGPD (Lei nº 13.709/2018), o Código de Defesa do Consumidor (Lei nº 8.078/1990) e o Marco Civil da Internet (Lei nº 12.965/2014).</p>
+        <h3>19.2 Foro</h3>
+        <p>Fica eleito o foro da Comarca de <strong>São José dos Campos – SP</strong> para dirimir quaisquer litígios decorrentes destes Termos, renunciando-se a qualquer outro, por mais privilegiado que seja.</p>
+        <h3>19.3 Resolução de Disputas</h3>
+        <p>As partes comprometem-se a tentar resolver conflitos de forma amigável em até 30 dias. Não havendo acordo, as disputas poderão ser submetidas à mediação ou arbitragem, conforme a Lei nº 9.307/1996, antes de recurso ao Judiciário.</p>
+        <h3>19.4 Disposições Gerais</h3>
+        <p>Se qualquer cláusula destes Termos for considerada inválida ou inaplicável, as demais permanecerão em plena vigência. A omissão no exercício de qualquer direito não constitui renúncia.</p>
+
+        <div class="doc-footer-note">
+          Versão 1.6 · Vigente a partir de 09/06/2026<br>
+          © Operi — Systrix Telecom Ltda · <a href="mailto:contato@systrix.com.br">contato@systrix.com.br</a>
+        </div>
+
+        <hr>
+
+        <h2>Anexo A — Checklist Técnico</h2>
+        <p>Este anexo complementa o Termo de Uso e deve ser atualizado a cada nova versão do aplicativo.</p>
+
+        <h3>A1 — Permissões Solicitadas</h3>
+        <table>
+          <thead>
+            <tr><th>Permissão</th><th>Finalidade</th><th>Obrigatória</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>CAMERA</code> / <code>NSCameraUsageDescription</code></td><td>Captura de fotos para anexo a ordens de serviço</td><td>Não</td></tr>
+            <tr><td><code>READ_MEDIA_IMAGES</code> / <code>NSPhotoLibraryUsageDescription</code></td><td>Seleção de imagens da galeria do dispositivo</td><td>Não</td></tr>
+            <tr><td><code>NSPhotoLibraryAddUsageDescription</code></td><td>Salvar fotos geradas pelo app na galeria (iOS)</td><td>Não</td></tr>
+            <tr><td><code>MANAGE_EXTERNAL_STORAGE</code></td><td>Gerenciar arquivos de anexos offline (Android)</td><td>Não</td></tr>
+            <tr><td><code>POST_NOTIFICATIONS</code> / <code>UNUserNotificationCenter</code></td><td>Alertas sobre OS e mensagens internas</td><td>Não</td></tr>
+            <tr><td><code>INTERNET</code></td><td>Comunicação com o servidor para sincronização e autenticação</td><td>Sim (para funcionalidades online)</td></tr>
+          </tbody>
+        </table>
+
+        <h3>A2 — Componentes e Serviços Terceiros</h3>
+        <table>
+          <thead>
+            <tr><th>Componente</th><th>Finalidade</th><th>Dados envolvidos</th><th>Processamento</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Armazenamento seguro do SO (Keystore / Keychain)</td><td>Guardar credenciais de sessão com criptografia nativa</td><td>Tokens de autenticação</td><td>Local no dispositivo</td></tr>
+            <tr><td>Armazenamento local de preferências</td><td>Configurações de interface e preferências do usuário</td><td>Configurações não sensíveis</td><td>Local no dispositivo</td></tr>
+            <tr><td>Google Fonts CDN</td><td>Carregamento de tipografia na interface web</td><td>IP do cliente (cabeçalho HTTP padrão)</td><td>Servidores Google (global)</td></tr>
+            <tr><td>Servidor de e-mail transacional (configurável)</td><td>Envio de notificações e alertas ao usuário</td><td>Endereço de e-mail e conteúdo da notificação</td><td>Depende do provedor configurado</td></tr>
+            <tr><td>Serviço de monitoramento de erros (opcional)</td><td>Relatórios de falha técnica para estabilidade do app</td><td>Stack trace e informações do dispositivo (sem PII)</td><td>A definir conforme implantação</td></tr>
+          </tbody>
+        </table>
+
+        <h3>A3 — Infraestrutura e Região de Dados</h3>
+        <ul>
+          <li><strong>Servidor principal:</strong> hospedado no Brasil (região definida na implantação do cliente)</li>
+          <li><strong>Armazenamento de arquivos e mídia:</strong> servidor do cliente — região a definir</li>
+          <li><strong>Transferência internacional:</strong> limitada ao carregamento de fontes via CDN do Google e ao provedor de e-mail transacional quando configurado fora do Brasil</li>
+          <li><strong>Fuso horário de processamento:</strong> America/Sao_Paulo</li>
+        </ul>
+
+        <h3>A4 — Dados Armazenados Localmente (Mobile)</h3>
+        <table>
+          <thead>
+            <tr><th>Dado</th><th>Armazenamento</th><th>Criptografado</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Tokens de autenticação (JWT)</td><td>Keystore / Keychain do SO</td><td>Sim</td></tr>
+            <tr><td>Rascunhos de OS, formulários e metadados</td><td>Banco de dados local no dispositivo</td><td>Não — avaliar ciframento se contiver CPF/assinatura</td></tr>
+            <tr><td>Fotos e anexos pendentes de sincronização</td><td>Diretório privado do aplicativo</td><td>Não</td></tr>
+            <tr><td>Configurações e preferências</td><td>Armazenamento local não sensível</td><td>Não (dados não sensíveis)</td></tr>
+          </tbody>
+        </table>
+        <blockquote>
+          <p>⚠ Rascunhos e fotos armazenados localmente que ainda não foram sincronizados podem ser perdidos em caso de desinstalação ou falha grave do dispositivo.</p>
+        </blockquote>
+
+        <h3>A5 — Fluxo de Sincronização Offline</h3>
+        <ul>
+          <li>Dados criados offline são gravados localmente com marcação de pendência</li>
+          <li>Ao reconectar, uma fila é processada com reenvio automático em caso de falha temporária</li>
+          <li>Conflito entre versão local e servidor: prevalece o registro com modificação mais recente</li>
+          <li>Registros com falha permanente de sincronização são sinalizados para revisão manual</li>
+        </ul>
+
+        <h3>A6 — Procedimento de Exclusão de Conta</h3>
+        <ul>
+          <li>Solicitação via e-mail ao DPO ou in-app (quando disponível)</li>
+          <li>Prazo de processamento: até 15 dias úteis</li>
+          <li>Dados não sujeitos à retenção legal são excluídos definitivamente</li>
+          <li>Confirmação enviada por e-mail após conclusão</li>
+        </ul>
+
+        <h3>A7 — Incident Response</h3>
+        <table>
+          <thead>
+            <tr><th>Etapa</th><th>Detalhe</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Canal de reporte</td><td><a href="mailto:contato@systrix.com.br">contato@systrix.com.br</a> · assunto: <code>[INCIDENTE]</code></td></tr>
+            <tr><td>Resposta inicial</td><td>Até 24 horas</td></tr>
+            <tr><td>Notificação a titulares afetados</td><td>Em até 72 horas (conforme LGPD)</td></tr>
+            <tr><td>Notificação à ANPD</td><td>Dentro do prazo legal</td></tr>
+          </tbody>
+        </table>
+
+        <h3>A8 — SLA de Suporte</h3>
+        <table>
+          <thead>
+            <tr><th>Prioridade</th><th>Descrição</th><th>Resposta</th><th>Resolução</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>P1</strong></td><td>Sistema indisponível</td><td>4 horas</td><td>24 horas</td></tr>
+            <tr><td><strong>P2</strong></td><td>Funcionalidade crítica com falha</td><td>24 horas</td><td>—</td></tr>
+            <tr><td><strong>P3</strong></td><td>Bug não crítico</td><td>3 dias úteis</td><td>—</td></tr>
+            <tr><td><strong>P4</strong></td><td>Dúvidas e melhorias</td><td>5 dias úteis</td><td>—</td></tr>
+          </tbody>
+        </table>
+        <p style="text-align:center;font-size:.72rem;color:var(--ink-4);margin-top:16px;">
+          Anexo A — Versão 1.6 · Última atualização: 09/06/2026 · Responsável: Matheus Maia (DPO)
+        </p>
+
+      </div><!-- /.doc-prose -->
+    </div><!-- /.container -->
+  </main>
+
+  <footer class="site-footer">
+    <div>
+      © <span id="year"></span> Systrix Telecom Ltda · Operi ·
+      <a href="./privacy.html">Política de Privacidade</a> ·
+      <a href="mailto:contato@systrix.com.br">contato@systrix.com.br</a>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
