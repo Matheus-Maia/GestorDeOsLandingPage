@@ -802,110 +802,63 @@
       background: rgba(124, 99, 245, 0.55);
     }
 
-    .mock-row {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      border: 1px solid var(--line-2);
-      border-radius: 12px;
-      padding: 12px 14px;
-    }
+    /* ─── REAL APP COMPONENTS ─── */
+    .op-kcard { background: #ffffff; border: 1px solid #e4e4e7; border-radius: 12px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); padding: 12px; display: flex; flex-direction: column; gap: 8px; font-family: var(--sans); text-align: left; }
+    .op-kcard__top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .op-kcard__num { font: 600 12px var(--font-mono, monospace); color: #71717a; }
+    .op-kcard__title { font-size: 14px; font-weight: 600; color: #09090b; margin: 0; line-height: 1.3; }
+    .op-kcard__client { font-size: 13px; color: #71717a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .op-kcard__meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .op-kcard__foot { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 2px; }
+    .op-kcard__date { font: 500 12px var(--font-mono, monospace); color: #71717a; display: inline-flex; align-items: center; gap: 4px; }
+    
+    .op-badge { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border-radius: 99px; font-size: 11px; font-weight: 600; white-space: nowrap; }
+    .op-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; }
+    .op-status-aberta { color: #2563EB; background: #DBEAFE; }
+    .op-status-aberta::before { background: currentColor; }
+    .op-status-andamento { color: #6A4AF1; background: #ECE8FD; }
+    .op-status-andamento::before { background: currentColor; }
+    .op-status-concluida { color: #16A34A; background: #DCFCE7; }
+    .op-status-concluida::before { background: currentColor; }
+    
+    .op-sla { display: inline-flex; align-items: center; gap: 4px; padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: 700; white-space: nowrap; text-transform: uppercase; letter-spacing: 0.05em; }
+    .op-sla-ok { color: #16A34A; background: #DCFCE7; }
+    .op-sla-risco { color: #D97706; background: #FEF3C7; }
+    .op-sla-estourado { color: #DC2626; background: #FEE2E2; }
+    
+    .op-priority { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.02em; }
+    .op-priority-alta { color: #D97706; }
+    .op-priority-critica { color: #DC2626; }
+    .op-priority-media { color: #0891B2; }
+    
+    .op-hourgauge { font-family: var(--sans); text-align: left; }
+    .op-hourgauge-header { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 6px; }
+    .op-hourgauge-label { font-size: 13px; font-weight: 600; color: #09090b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .op-hourgauge-numbers { font: 12px var(--font-mono, monospace); color: #71717a; }
+    .op-hourgauge-bar-bg { height: 8px; border-radius: 99px; background: #f4f4f5; overflow: hidden; }
+    .op-hourgauge-bar-fill { height: 100%; border-radius: 99px; }
+    .op-hourgauge-footer { display: flex; justify-content: space-between; margin-top: 5px; font-size: 11px; color: #71717a; }
+    
+    .op-agenda { display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 8px; background: #ffffff; border: 1px solid #e4e4e7; position: relative; text-align: left; }
+    .op-agenda::before { content: ''; width: 3px; align-self: stretch; border-radius: 99px; background: var(--ag-color); }
+    .op-agenda-time { font: 600 12px var(--font-mono, monospace); color: #09090b; width: 42px; flex: none; }
+    .op-agenda-body { flex: 1; min-width: 0; }
+    .op-agenda-title { font-size: 13px; font-weight: 600; color: #09090b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .op-agenda-sub { font-size: 12px; color: #71717a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-    .mock-stripe {
-      width: 4px;
-      height: 34px;
-      border-radius: 99px;
-      flex-shrink: 0;
-    }
-
-    .mock-lines {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      flex: 1;
-    }
-
-    .mock-pill {
-      font-size: 10.5px;
-      font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 99px;
-      letter-spacing: 0.04em;
-      white-space: nowrap;
-    }
-
-    .pill-green { background: var(--green-dim); color: var(--green); }
-    .pill-amber { background: var(--amber-dim); color: var(--amber); }
-    .pill-violet { background: var(--accent-dim); color: var(--accent); }
-
-    .mock-photos {
-      display: grid;
-      grid-template-columns: repeat(2, 56px);
-      gap: 8px;
-    }
-
-    .mock-photos span {
-      width: 56px;
-      height: 56px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, var(--line-2), var(--line));
-    }
-
-    .mock-signature {
-      margin-top: 6px;
-      font-size: 11.5px;
-      color: var(--green);
-      font-weight: 600;
-      border: 1px dashed var(--green-dim);
-      background: #f6fdf9;
-      padding: 8px 10px;
-      border-radius: 10px;
-      width: fit-content;
-    }
-
-    .mock-chart {
-      display: flex;
-      align-items: flex-end;
-      gap: 10px;
-      height: 120px;
-      padding: 4px 6px 0;
-    }
-
-    .mock-chart span {
-      flex: 1;
-      border-radius: 6px 6px 2px 2px;
-      background: linear-gradient(180deg, var(--accent), var(--accent-deep));
-      opacity: 0.85;
-    }
-
-    .mock-kpis {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-    }
-
-    .mock-kpi {
-      border: 1px solid var(--line-2);
-      border-radius: 12px;
-      padding: 10px;
-      text-align: center;
-    }
-
-    .mock-kpi em {
-      font-style: normal;
-      font-family: var(--serif);
-      font-size: 1.25rem;
-      display: block;
-      color: var(--ink);
-    }
-
-    .mock-kpi i {
-      font-style: normal;
-      font-size: 10.5px;
-      color: var(--ink-4);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
+    /* ─── REAL APP COMPONENTS (NOVO) ─── */
+    .op-dark-mode { background: #09090b !important; color: #fafafa; }
+    .op-kpi-card { background: #18181b; border: 1px solid #27272a; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px; font-family: var(--sans); }
+    .op-kpi-val { font-size: 24px; font-weight: 700; color: #fafafa; font-family: var(--font-mono, monospace); }
+    .op-kpi-lbl { font-size: 13px; color: #a1a1aa; font-weight: 500; }
+    
+    .op-photo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .op-photo { aspect-ratio: 4/3; background: #e4e4e7; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #a1a1aa; overflow: hidden; position: relative; }
+    .op-photo-lbl { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); color: #fff; font-size: 10px; padding: 4px; text-align: center; font-family: var(--sans); }
+    
+    .op-signature-box { border: 1px dashed #d4d4d8; border-radius: 8px; background: #fafafa; padding: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; font-family: var(--sans); }
+    .op-signature-img { height: 40px; opacity: 0.8; }
+    .op-signature-lbl { font-size: 11px; font-weight: 600; color: #71717a; text-transform: uppercase; letter-spacing: 0.05em; }
 
     .car-caption {
       text-align: center;
@@ -1467,8 +1420,7 @@
       <div class="hero-eyebrow">Beta aberto · Acesso antecipado</div>
       <h1 class="hero-h1">Gestão de OS que <em>funciona de verdade</em></h1>
       <p class="hero-sub">
-        Do campo ao escritório. Crie, gerencie e finalize ordens de serviço onde estiver — com ou sem internet.
-        O Operi está em fase de validação com clientes reais: entre na lista de espera e conheça em primeira mão.
+        Desenvolvido com tecnologia de ponta (React), o Operi é ultra-rápido, fluído e funciona em qualquer dispositivo. Crie, gerencie e finalize ordens de serviço onde estiver — com ou sem internet.
       </p>
       <div class="hero-cta">
         <a href="#contato" class="btn-primary">
@@ -1703,72 +1655,222 @@
       <div class="carousel" id="carousel" aria-roledescription="carrossel">
         <div class="car-track" id="car-track">
 
-          <!-- Slide 1: Painel de OS -->
+          <!-- Slide 1: Kanban Operacional -->
           <div class="car-slide">
             <div class="browser-mock">
               <div class="browser-top"><span></span><span></span><span></span></div>
-              <div class="browser-body">
-                <div class="mock-row"><span class="mock-stripe" style="background:#3b82f6"></span>
-                  <div class="mock-lines"><div class="mockup-bar w-2-3"></div><div class="mockup-bar w-1-2"></div></div>
-                  <span class="mock-pill pill-green">Concluída</span>
+              <div class="browser-body" style="background: #f4f4f5; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 16px;">
+                <div class="op-kcard">
+                  <div class="op-kcard__top"><span class="op-kcard__num">OS-2041</span> <span class="op-priority op-priority-alta"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><path d="M4 22v-7"></path></svg> Alta</span></div>
+                  <h4 class="op-kcard__title">Troca de correia do compressor</h4>
+                  <div class="op-kcard__client">Metalúrgica Andrade</div>
+                  <div class="op-kcard__meta">
+                    <span class="op-badge op-status-andamento">Em andamento</span>
+                    <span class="op-sla op-sla-risco"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> 45min</span>
+                  </div>
+                  <div class="op-kcard__foot">
+                    <span class="op-kcard__date" style="color: #DC2626; font-weight: 600;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg> hoje · 14h00</span>
+                    <div style="width:20px;height:20px;border-radius:50%;background:#e4e4e7;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#71717a">RL</div>
+                  </div>
                 </div>
-                <div class="mock-row"><span class="mock-stripe" style="background:#ec4899"></span>
-                  <div class="mock-lines"><div class="mockup-bar w-full"></div><div class="mockup-bar w-1-2"></div></div>
-                  <span class="mock-pill pill-amber">Em campo</span>
-                </div>
-                <div class="mock-row"><span class="mock-stripe" style="background:#10b981"></span>
-                  <div class="mock-lines"><div class="mockup-bar w-2-3"></div><div class="mockup-bar w-1-2"></div></div>
-                  <span class="mock-pill pill-violet">Aberta</span>
+                
+                <div class="op-kcard">
+                  <div class="op-kcard__top"><span class="op-kcard__num">OS-2037</span> <span class="op-priority op-priority-media"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><path d="M4 22v-7"></path></svg> Média</span></div>
+                  <h4 class="op-kcard__title">Manutenção preventiva mensal</h4>
+                  <div class="op-kcard__client">Frigorífico Bom Corte</div>
+                  <div class="op-kcard__meta">
+                    <span class="op-badge op-status-aberta">Aberta</span>
+                    <span class="op-sla op-sla-ok"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> 2 dias</span>
+                  </div>
+                  <div class="op-kcard__foot">
+                    <span class="op-kcard__date"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg> amanhã · 09h00</span>
+                    <div style="width:20px;height:20px;border-radius:50%;background:#e4e4e7;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#71717a">AS</div>
+                  </div>
                 </div>
               </div>
             </div>
             <div class="car-caption">
-              <strong>Painel de ordens</strong>
-              <span>Toda a operação numa tela: status, tipo de atendimento e responsável de cada OS.</span>
+              <strong>Kanban Operacional</strong>
+              <span>Acompanhe o status, SLAs e prioridades de cada OS no painel visual da sua operação.</span>
             </div>
           </div>
 
-          <!-- Slide 2: OS completa -->
+          <!-- Slide 2: Gestão de Contratos -->
           <div class="car-slide">
             <div class="browser-mock">
               <div class="browser-top"><span></span><span></span><span></span></div>
-              <div class="browser-body browser-2col">
-                <div class="mock-photos">
-                  <span></span><span></span><span></span><span></span>
+              <div class="browser-body" style="background: #ffffff; padding: 24px; display: flex; flex-direction: column; gap: 20px;">
+                <div class="op-hourgauge">
+                  <div class="op-hourgauge-header">
+                    <span class="op-hourgauge-label">Metalúrgica Andrade — Pacote Mensal</span>
+                    <span class="op-hourgauge-numbers"><b style="color: #D97706; font-weight: 600;">33h</b> / 40h</span>
+                  </div>
+                  <div class="op-hourgauge-bar-bg">
+                    <div class="op-hourgauge-bar-fill" style="width: 82%; background: #D97706;"></div>
+                  </div>
+                  <div class="op-hourgauge-footer">
+                    <span style="font-weight: 600; color: #D97706;">82% consumido</span>
+                    <span>saldo <b style="font-weight: 600; color: #09090b;">7h</b></span>
+                  </div>
                 </div>
-                <div class="mock-lines" style="flex:1">
-                  <div class="mockup-bar w-2-3 accent"></div>
-                  <div class="mockup-bar w-full"></div>
-                  <div class="mockup-bar w-full"></div>
-                  <div class="mock-signature">Assinatura do cliente ✓</div>
+                
+                <div class="op-hourgauge">
+                  <div class="op-hourgauge-header">
+                    <span class="op-hourgauge-label">Frigorífico Bom Corte — CTR-0112</span>
+                    <span class="op-hourgauge-numbers"><b style="color: #16A34A; font-weight: 600;">9h</b> / 20h</span>
+                  </div>
+                  <div class="op-hourgauge-bar-bg">
+                    <div class="op-hourgauge-bar-fill" style="width: 45%; background: #16A34A;"></div>
+                  </div>
+                  <div class="op-hourgauge-footer">
+                    <span style="font-weight: 600; color: #16A34A;">45% consumido</span>
+                    <span>saldo <b style="font-weight: 600; color: #09090b;">11h</b></span>
+                  </div>
+                </div>
+                
+                <div class="op-hourgauge">
+                  <div class="op-hourgauge-header">
+                    <span class="op-hourgauge-label">Transportes Vale — CTR-0076</span>
+                    <span class="op-hourgauge-numbers"><b style="color: #DC2626; font-weight: 600;">31h</b> / 30h</span>
+                  </div>
+                  <div class="op-hourgauge-bar-bg">
+                    <div class="op-hourgauge-bar-fill" style="width: 100%; background: #DC2626;"></div>
+                  </div>
+                  <div class="op-hourgauge-footer">
+                    <span style="font-weight: 600; color: #DC2626;">103% consumido (Estourado)</span>
+                    <span>saldo <b style="font-weight: 600; color: #09090b;">0h</b></span>
+                  </div>
                 </div>
               </div>
             </div>
             <div class="car-caption">
-              <strong>OS completa</strong>
-              <span>Fotos, descrição do serviço e assinatura digital — tudo vira um PDF profissional.</span>
+              <strong>Gestão de Contratos e Franquias</strong>
+              <span>Acompanhe o consumo de horas, contratos estourados e faça o fechamento de faturamento sem planilhas.</span>
             </div>
           </div>
 
-          <!-- Slide 3: Relatório mensal -->
+          <!-- Slide 3: Agenda e Despacho -->
           <div class="car-slide">
             <div class="browser-mock">
               <div class="browser-top"><span></span><span></span><span></span></div>
-              <div class="browser-body">
-                <div class="mock-chart">
-                  <span style="height:38%"></span><span style="height:62%"></span><span style="height:45%"></span>
-                  <span style="height:80%"></span><span style="height:58%"></span><span style="height:92%"></span>
-                </div>
-                <div class="mock-kpis">
-                  <div class="mock-kpi"><em>32</em><i>OS no mês</i></div>
-                  <div class="mock-kpi"><em>148h</em><i>Horas</i></div>
-                  <div class="mock-kpi"><em>97%</em><i>No prazo</i></div>
+              <div class="browser-body" style="background: #f4f4f5; padding: 24px;">
+                <div style="font-size: 11px; font-weight: 600; color: #71717a; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; font-family: var(--sans);">Agenda de Hoje</div>
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                  <div class="op-agenda" style="--ag-color: #6A4AF1;">
+                    <span class="op-agenda-time">09h00</span>
+                    <div class="op-agenda-body">
+                      <div class="op-agenda-title">Preventiva — Compressor 02</div>
+                      <div class="op-agenda-sub">Metalúrgica Andrade · Rafael Lima</div>
+                    </div>
+                  </div>
+                  <div class="op-agenda" style="--ag-color: #0891B2;">
+                    <span class="op-agenda-time">11h30</span>
+                    <div class="op-agenda-body">
+                      <div class="op-agenda-title">Visita técnica — esteira 4</div>
+                      <div class="op-agenda-sub">Frigorífico Bom Corte · Ana Souza</div>
+                    </div>
+                  </div>
+                  <div class="op-agenda" style="--ag-color: #D97706;">
+                    <span class="op-agenda-time">15h00</span>
+                    <div class="op-agenda-body">
+                      <div class="op-agenda-title">Renovação CTR-0076</div>
+                      <div class="op-agenda-sub">Transportes Vale · Comercial</div>
+                    </div>
+                  </div>
+                  <div class="op-agenda" style="--ag-color: #16A34A;">
+                    <span class="op-agenda-time">17h00</span>
+                    <div class="op-agenda-body">
+                      <div class="op-agenda-title">Treinamento Nova Equipe</div>
+                      <div class="op-agenda-sub">Interno · Carlos Pereira</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
             <div class="car-caption">
-              <strong>Relatório mensal</strong>
-              <span>Horas, produtividade e histórico por cliente — com link público pra compartilhar.</span>
+              <strong>Agenda Integrada</strong>
+              <span>Visualize preventivas, visitas técnicas e instalações. Despache as ordens de serviço direto para o celular dos técnicos.</span>
+            </div>
+          </div>
+
+          <!-- Slide 4: OS Digital e Assinatura -->
+          <div class="car-slide">
+            <div class="browser-mock">
+              <div class="browser-top"><span></span><span></span><span></span></div>
+              <div class="browser-body" style="background: #ffffff; padding: 16px; display: flex; flex-direction: column; gap: 16px; overflow-y: auto;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-family: var(--font-mono, monospace); font-weight: 600; color: #09090b; font-size: 14px;">OS-2045</span>
+                  <span class="op-badge op-status-andamento">Em campo</span>
+                </div>
+                
+                <div>
+                  <div style="font-family: var(--sans); font-size: 13px; font-weight: 600; color: #09090b; margin-bottom: 8px;">Evidências Fotográficas</div>
+                  <div class="op-photo-grid">
+                    <div class="op-photo">
+                      <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=400&auto=format&fit=crop" alt="Antes do reparo">
+                      <div class="op-photo-lbl">Antes do reparo</div>
+                    </div>
+                    <div class="op-photo">
+                      <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=400&auto=format&fit=crop" alt="Peça substituída">
+                      <div class="op-photo-lbl">Peça substituída</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <div style="font-family: var(--sans); font-size: 13px; font-weight: 600; color: #09090b; margin-bottom: 8px;">Assinatura do Cliente</div>
+                  <div class="op-signature-box">
+                    <svg class="op-signature-img" viewBox="0 0 200 60" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M10 40 Q 30 10, 50 30 T 90 20 T 130 50 T 180 20" />
+                    </svg>
+                    <span class="op-signature-lbl">Assinado via Mobile</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="car-caption">
+              <strong>OS 100% Digital</strong>
+              <span>Diga adeus ao papel. Técnicos anexam fotos, checklists e coletam assinatura digital direto pelo celular.</span>
+            </div>
+          </div>
+
+          <!-- Slide 5: Dashboard e Dark Mode -->
+          <div class="car-slide">
+            <div class="browser-mock op-dark-mode" style="border-color: #27272a;">
+              <div class="browser-top" style="border-bottom-color: #27272a;">
+                <span style="background: #3f3f46;"></span><span style="background: #3f3f46;"></span><span style="background: #3f3f46;"></span>
+              </div>
+              <div class="browser-body" style="padding: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                
+                <div class="op-kpi-card">
+                  <span class="op-kpi-lbl">Abertas</span>
+                  <span class="op-kpi-val">14</span>
+                  <span style="color: #10b981; font-size: 11px; font-weight: 600;">↓ -2 hoje</span>
+                </div>
+                
+                <div class="op-kpi-card">
+                  <span class="op-kpi-lbl">Aguardando Aprov.</span>
+                  <span class="op-kpi-val" style="color: #f59e0b;">5</span>
+                  <span style="color: #71717a; font-size: 11px; font-weight: 600;">Orçamentos</span>
+                </div>
+
+                <div class="op-kpi-card">
+                  <span class="op-kpi-lbl">Atrasadas (SLA)</span>
+                  <span class="op-kpi-val" style="color: #ef4444;">2</span>
+                  <span style="color: #ef4444; font-size: 11px; font-weight: 600;">Requer atenção</span>
+                </div>
+
+                <div class="op-kpi-card">
+                  <span class="op-kpi-lbl">Horas no Mês</span>
+                  <span class="op-kpi-val">128h</span>
+                  <span style="color: #10b981; font-size: 11px; font-weight: 600;">↑ +14%</span>
+                </div>
+
+              </div>
+            </div>
+            <div class="car-caption">
+              <strong>Painel Gerencial (Modo Escuro)</strong>
+              <span>Controle total em tempo real com Dark Mode nativo. Uma visão rápida e precisa sem recarregar a página.</span>
             </div>
           </div>
 
@@ -1777,6 +1879,8 @@
           <button type="button" class="active" aria-label="Slide 1"></button>
           <button type="button" aria-label="Slide 2"></button>
           <button type="button" aria-label="Slide 3"></button>
+          <button type="button" aria-label="Slide 4"></button>
+          <button type="button" aria-label="Slide 5"></button>
         </div>
       </div>
     </div>
